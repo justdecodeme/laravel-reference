@@ -28,4 +28,6 @@ Route::get('/create', function () {
     $post = new Post(['title' => 'post title', 'body' => 'post body']);
 
     $user->posts()->save($post);
+
+    echo "Done!";
 });
