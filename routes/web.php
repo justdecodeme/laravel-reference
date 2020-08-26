@@ -56,3 +56,14 @@ Route::get('/update', function () {
 
     echo "Done!";
 });
+
+/* ********* */
+/* DELETE */
+/* ********* */
+Route::get('/delete', function () {
+    $user = User::findOrFail(1);
+
+    $user->posts()->whereId(1)->delete();
+
+    echo "Done!";
+});
