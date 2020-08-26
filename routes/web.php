@@ -45,3 +45,14 @@ Route::get('/read', function () {
         echo $post->title . "<br/>";
     }
 });
+
+/* ********* */
+/* UPDATE */
+/* ********* */
+Route::get('/update', function () {
+    $user = User::findOrFail(1);
+
+    $user->posts()->whereId(1)->update(['title' => 'new title', 'body' => 'new body']);
+
+    echo "Done!";
+});
