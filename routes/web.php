@@ -26,3 +26,13 @@ Route::get('/create', function () {
 
     $user->address()->save($address);
 });
+
+Route::get('/update', function () {
+    // $address = Address::where('user_id', 1)->first();
+    // $address = Address::where('user_id', '=', 1)->first();
+    $address = Address::whereUserId(1)->first();
+
+    $address->name = "Shreshta In";
+
+    $address->save();
+});
