@@ -31,3 +31,17 @@ Route::get('/create', function () {
 
     echo "Done!";
 });
+
+/* ********* */
+/* READ */
+/* ********* */
+Route::get('/read', function () {
+    $user = User::findOrFail(1);
+
+    // dd($user); /* object */
+    // dd($user->posts); /* collection */
+
+    foreach ($user->posts as $post) {
+        echo $post->title . "<br/>";
+    }
+});
