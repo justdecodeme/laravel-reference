@@ -31,3 +31,44 @@ Route::get('/create', function () {
 
     echo "Done!";
 });
+
+/* ********* */
+/* READ */
+/* ********* */
+Route::get('/read', function () {
+    $user = User::findOrFail(1);
+
+    foreach ($user->roles as $role) {
+        echo $role->name . "<br/>";
+    }
+});
+
+/* ********* */
+/* UPDATE */
+/* ********* */
+Route::get('/update', function () {
+    $user = User::findOrFail(1);
+
+    if ($user->has('roles')) {
+        foreach ($user->roles as $role) {
+            if ($role->name == 'Administrator') {
+                $role->name = 'subscriber';
+                $role->save();
+                echo "Done!";
+            }
+        }
+
+    }
+});
+
+/* ********* */
+/* DELETE */
+/* ********* */
+Route::get('/delete', function () {
+    $user = User::findOrFail(1);
+
+    foreach ($user->roles as $role) {
+        $role->whereId(1)->delete();
+        echo "Done!";
+    }
+});
