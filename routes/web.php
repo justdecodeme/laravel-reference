@@ -42,3 +42,9 @@ Route::get('/update', function () {
 
     $address->save();
 });
+
+Route::get('/delete', function () {
+    $user = User::findOrFail(1);
+
+    $user->address()->delete();
+});
